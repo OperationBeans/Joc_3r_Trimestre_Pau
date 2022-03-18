@@ -32,6 +32,5 @@ func _on_Personatge_area_entered(area):
 		rotation_degrees += 120
 
 func _on_Personatge_area_exited(area):
-	for i in range(0,12,1):
-		modulate = Color(1,1,1)
-		scale += Vector2(0.01,0.01)
+	modulate = Color(1,1,1)
+	scale += Vector2(0.01,0.01)
