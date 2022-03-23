@@ -1,4 +1,5 @@
 extends KinematicBody2D
+var vida = 100
 
 var velocitat_base = 200
 var velocitat = Vector2.ZERO
@@ -32,3 +33,15 @@ func anima(velocitat: Vector2):
 		
 	if abs(velocitat.x) < 0.5:
 		animacio.play('default')
+	
+func _on_Llanes_body_entered(body):
+	modulate = Color(1, 0, 0)
+	vida -= 20
+func _on_Llanes_body_exited(body):
+	modulate = Color(1, 1, 1)
+
+func _on_Portal_abaix_body_entered(body):
+	position = Vector2(240,140)
+
+func _on_Portal_Dalt_body_entered(body):
+	position = Vector2(860,300)

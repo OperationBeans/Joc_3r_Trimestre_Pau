@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Personatge.tscn" type="PackedScene" id=1]
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 261.5, 20.5 )
+[ext_resource path="res://floor.jpg" type="Texture" id=2]
+[ext_resource path="res://lanza.png" type="Texture" id=3]
+[ext_resource path="res://portal.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 21.5 )
@@ -11,37 +11,59 @@ extents = Vector2( 512, 21.5 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 130, 20 )
 
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 95.0496
+height = 317.449
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 25, 40.7188 )
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 18.0
+height = 26.0
+
 [node name="Node2D" type="Node2D"]
-
-[node name="Terra3" type="StaticBody2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Terra3"]
-margin_left = 501.0
-margin_top = 517.0
-margin_right = 1024.0
-margin_bottom = 557.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra3"]
-position = Vector2( 762.5, 537.5 )
-shape = SubResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 299.0 ]
+}
 
 [node name="Personatge" parent="." instance=ExtResource( 1 )]
-position = Vector2( 447, 87 )
+position = Vector2( 447, 95 )
 
 [node name="Camera2D" type="Camera2D" parent="Personatge"]
+position = Vector2( 11, 201 )
 current = true
-zoom = Vector2( 2, 2 )
 
 [node name="Terra" type="StaticBody2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Terra"]
-margin_top = 557.0
-margin_right = 1024.0
-margin_bottom = 600.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra"]
-position = Vector2( 512, 578.5 )
+[node name="Collision_Terra" type="CollisionShape2D" parent="Terra"]
+position = Vector2( 512, 579 )
 shape = SubResource( 1 )
+
+[node name="Terra5" type="Sprite" parent="Terra"]
+position = Vector2( 884.5, 579.5 )
+scale = Vector2( 0.491379, 0.111399 )
+texture = ExtResource( 2 )
+
+[node name="Terra4" type="Sprite" parent="Terra"]
+position = Vector2( 480, 578.5 )
+scale = Vector2( 0.462069, 0.111399 )
+texture = ExtResource( 2 )
+
+[node name="Terra3" type="Sprite" parent="Terra"]
+position = Vector2( 87.0996, 579.165 )
+scale = Vector2( 0.299657, 0.107953 )
+texture = ExtResource( 2 )
+
+[node name="Terra2" type="Sprite" parent="Terra"]
+position = Vector2( 260.25, 578.75 )
+scale = Vector2( 0.297414, 0.110103 )
+texture = ExtResource( 2 )
+
+[node name="Terra" type="Sprite" parent="Terra"]
+position = Vector2( 678, 578.5 )
+scale = Vector2( 0.22069, 0.111399 )
+texture = ExtResource( 2 )
 
 [node name="Terra2" type="StaticBody2D" parent="."]
 
@@ -54,3 +76,63 @@ margin_bottom = 399.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terra2"]
 position = Vector2( 271, 379 )
 shape = SubResource( 2 )
+
+[node name="Portal_abaix" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Portal_abaix"]
+position = Vector2( 978, 500 )
+scale = Vector2( 0.2525, 0.243 )
+texture = ExtResource( 4 )
+
+[node name="Collision_Portal_Abaix" type="CollisionShape2D" parent="Portal_abaix"]
+position = Vector2( 989, 503 )
+scale = Vector2( 0.2525, 0.243 )
+shape = SubResource( 4 )
+
+[node name="Llançes" type="Area2D" parent="."]
+
+[node name="Collision LLances" type="CollisionShape2D" parent="Llançes"]
+position = Vector2( 776, 516.719 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Llançes"]
+position = Vector2( 766, 514.125 )
+scale = Vector2( 0.0775, 0.08825 )
+texture = ExtResource( 3 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Sprite2" type="Sprite" parent="Llançes"]
+position = Vector2( 780, 514.125 )
+scale = Vector2( 0.0775, 0.08825 )
+texture = ExtResource( 3 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Sprite3" type="Sprite" parent="Llançes"]
+position = Vector2( 794, 514.125 )
+scale = Vector2( 0.0775, 0.08825 )
+texture = ExtResource( 3 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Sprite4" type="Sprite" parent="Llançes"]
+position = Vector2( 809, 514.125 )
+scale = Vector2( 0.0775, 0.08825 )
+texture = ExtResource( 3 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Portal_Dalt" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Portal_Dalt"]
+position = Vector2( 200, 315 )
+scale = Vector2( 0.179375, 0.1895 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_Dalt"]
+position = Vector2( 200, 318 )
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="Portal_abaix" to="Personatge" method="_on_Portal_abaix_body_entered"]
+[connection signal="area_exited" from="Llançes" to="Personatge" method="_on_Llanes_area_exited"]
+[connection signal="body_entered" from="Llançes" to="Personatge" method="_on_Llanes_body_entered"]
+[connection signal="body_exited" from="Llançes" to="Personatge" method="_on_Llanes_body_exited"]
+[connection signal="area_entered" from="Portal_Dalt" to="Personatge" method="_on_Portal_Dalt_area_entered"]
+[connection signal="body_entered" from="Portal_Dalt" to="Personatge" method="_on_Portal_Dalt_body_entered"]
