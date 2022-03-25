@@ -1,9 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Personatge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://floor.jpg" type="Texture" id=2]
 [ext_resource path="res://lanza.png" type="Texture" id=3]
 [ext_resource path="res://portal.png" type="Texture" id=4]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/lavaTop_high.png" type="Texture" id=5]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/lavaTop_low.png" type="Texture" id=6]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/signRight.png" type="Texture" id=7]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/lava.png" type="Texture" id=8]
+[ext_resource path="res://PLATFORMER PACK/PNG/Ground/Stone/stone.png" type="Texture" id=9]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/leverLeft.png" type="Texture" id=10]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/leverRight.png" type="Texture" id=11]
+[ext_resource path="res://pALANCA.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 21.5 )
@@ -16,11 +24,50 @@ radius = 95.0496
 height = 317.449
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 25, 40.7188 )
+extents = Vector2( 25, 33.2189 )
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 18.0
 height = 26.0
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 72.625, 10.125 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 88, 19.25 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 69.5, 19.5 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 72.0625, 9 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 37.5, 22 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "OBERT",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "TANCAT",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 55.8874, 41.6378 )
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -67,15 +114,19 @@ texture = ExtResource( 2 )
 
 [node name="Terra2" type="StaticBody2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Terra2"]
-margin_left = 141.0
-margin_top = 359.0
-margin_right = 401.0
-margin_bottom = 399.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terra2"]
 position = Vector2( 271, 379 )
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Terra2"]
+position = Vector2( 217.125, 379 )
+scale = Vector2( 0.261638, 0.103627 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Terra2"]
+position = Vector2( 347, 379 )
+scale = Vector2( 0.186207, 0.103627 )
+texture = ExtResource( 2 )
 
 [node name="Portal_abaix" type="Area2D" parent="."]
 
@@ -92,30 +143,30 @@ shape = SubResource( 4 )
 [node name="Llançes" type="Area2D" parent="."]
 
 [node name="Collision LLances" type="CollisionShape2D" parent="Llançes"]
-position = Vector2( 776, 516.719 )
+position = Vector2( 776, 524.219 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Llançes"]
-position = Vector2( 766, 514.125 )
-scale = Vector2( 0.0775, 0.08825 )
+position = Vector2( 766, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
 texture = ExtResource( 3 )
 offset = Vector2( -141.936, 0 )
 
 [node name="Sprite2" type="Sprite" parent="Llançes"]
-position = Vector2( 780, 514.125 )
-scale = Vector2( 0.0775, 0.08825 )
+position = Vector2( 780, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
 texture = ExtResource( 3 )
 offset = Vector2( -141.936, 0 )
 
 [node name="Sprite3" type="Sprite" parent="Llançes"]
-position = Vector2( 794, 514.125 )
-scale = Vector2( 0.0775, 0.08825 )
+position = Vector2( 794, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
 texture = ExtResource( 3 )
 offset = Vector2( -141.936, 0 )
 
 [node name="Sprite4" type="Sprite" parent="Llançes"]
-position = Vector2( 809, 514.125 )
-scale = Vector2( 0.0775, 0.08825 )
+position = Vector2( 809, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
 texture = ExtResource( 3 )
 offset = Vector2( -141.936, 0 )
 
@@ -130,9 +181,104 @@ texture = ExtResource( 4 )
 position = Vector2( 200, 318 )
 shape = SubResource( 5 )
 
+[node name="LAVA" type="AnimatedSprite" parent="."]
+position = Vector2( 474.25, 374.5 )
+scale = Vector2( 1.13672, 0.226562 )
+frames = SubResource( 7 )
+frame = 2
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 474.375, 389.125 )
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 474, 389 )
+scale = Vector2( 0.251724, 0.0518134 )
+texture = ExtResource( 2 )
+
+[node name="Terra3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terra3"]
+position = Vector2( 773, 380 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra3"]
+position = Vector2( 616.5, 379.5 )
+shape = SubResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="Terra3"]
+position = Vector2( 616.25, 379.5 )
+scale = Vector2( 0.238793, 0.101036 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Terra3"]
+position = Vector2( 773.25, 379.5 )
+scale = Vector2( 0.304311, 0.101036 )
+texture = ExtResource( 2 )
+
+[node name="HITBOX LAVA" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HITBOX LAVA"]
+position = Vector2( 473.938, 369 )
+shape = SubResource( 9 )
+
+[node name="FLEXA" type="Sprite" parent="."]
+position = Vector2( 28.25, 536.25 )
+scale = Vector2( 0.308594, 0.332032 )
+texture = ExtResource( 7 )
+
+[node name="Peldones" type="StaticBody2D" parent="."]
+
+[node name="Sprite2" type="Sprite" parent="Peldones"]
+position = Vector2( 1081, 214 )
+scale = Vector2( 0.631817, 0.368044 )
+texture = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Peldones"]
+position = Vector2( 935, 302 )
+scale = Vector2( 0.613282, 0.355469 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="Peldones"]
+position = Vector2( 1230, 135 )
+scale = Vector2( 0.631817, 0.368044 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Peldones"]
+position = Vector2( 935, 302 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Peldones"]
+position = Vector2( 1230, 134 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Peldones"]
+position = Vector2( 1081, 214 )
+shape = SubResource( 12 )
+
+[node name="Palanca" type="Area2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Palanca"]
+position = Vector2( 717.75, 342.25 )
+scale = Vector2( 0.277344, 0.269531 )
+frames = SubResource( 13 )
+animation = "TANCAT"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Palanca"]
+position = Vector2( 717.5, 348 )
+scale = Vector2( 0.277344, 0.269531 )
+shape = SubResource( 14 )
+
 [connection signal="body_entered" from="Portal_abaix" to="Personatge" method="_on_Portal_abaix_body_entered"]
 [connection signal="area_exited" from="Llançes" to="Personatge" method="_on_Llanes_area_exited"]
 [connection signal="body_entered" from="Llançes" to="Personatge" method="_on_Llanes_body_entered"]
 [connection signal="body_exited" from="Llançes" to="Personatge" method="_on_Llanes_body_exited"]
 [connection signal="area_entered" from="Portal_Dalt" to="Personatge" method="_on_Portal_Dalt_area_entered"]
 [connection signal="body_entered" from="Portal_Dalt" to="Personatge" method="_on_Portal_Dalt_body_entered"]
+[connection signal="body_entered" from="HITBOX LAVA" to="Personatge" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="HITBOX LAVA" to="Personatge" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Palanca" to="Palanca" method="_on_Palanca_body_entered"]
