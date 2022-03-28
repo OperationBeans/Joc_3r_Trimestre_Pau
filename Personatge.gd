@@ -9,6 +9,8 @@ var segons_dins = 0
 
 func _physics_process(delta):
 	velocitat.x = 0
+	if position.y >= 450:
+		vida -=100
 	if Input.is_action_pressed("mou_dreta"):
 		velocitat += Vector2.RIGHT * velocitat_base
 	if Input.is_action_pressed("mou_esquerra"):
@@ -49,9 +51,6 @@ func _on_Portal_abaix_body_entered(body):
 func _on_Portal_Dalt_body_entered(body):
 	position = Vector2(860,300)
 
-
-
-
 func _on_Area2D_body_entered(body):
 	dins = true
 	velocitat_base = 100
@@ -66,9 +65,19 @@ func _on_Timer_timeout():
 		velocitat_base = 200
 	else:
 		modulate = Color(1,0.5,0)
+		
 func _on_Area2D_body_exited(body):
 	segons_dins = 0
 	modulate = Color(1,1,1)
 	dins = false
 	$Timer.stop()
 
+func _on_PINXOS_PELDON2_body_entered(body):
+	modulate  = Color(1,0,0)
+	vida -= 20
+func _on_PINXOS_PELDON2_body_exited(body):
+	modulate = Color(1,1,1)
+func _on_hitbox_aigua_body_entered(body):
+	velocitat_base = 20
+func _on_hitbox_aigua_body_exited(body):
+	velocitat_base = 200
