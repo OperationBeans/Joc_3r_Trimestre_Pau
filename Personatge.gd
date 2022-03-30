@@ -6,7 +6,6 @@ var velocitat = Vector2.ZERO
 var gravetat = Vector2.DOWN * 980
 var salt = Vector2.UP * 450
 var segons_dins = 0
-
 func _physics_process(delta):
 	velocitat.x = 0
 	if position.y >= 450:
@@ -23,7 +22,7 @@ func _physics_process(delta):
 	velocitat = move_and_slide(velocitat, Vector2.UP)
 	anima(velocitat)
 	if vida <=0 :
-		print('Mort')
+		get_tree().change_scene("res://INICI.tscn")
 func anima(velocitat: Vector2):
 	var animacio = $AnimatedSprite
 	if velocitat.x > 0:
@@ -81,3 +80,6 @@ func _on_hitbox_aigua_body_entered(body):
 	velocitat_base = 20
 func _on_hitbox_aigua_body_exited(body):
 	velocitat_base = 200
+
+func _on_HITBOX_INICI_body_entered(body):
+	modulate = Color(1,1,1)
