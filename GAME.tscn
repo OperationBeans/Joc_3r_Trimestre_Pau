@@ -1,0 +1,489 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/lavaTop_high.png" type="Texture" id=1]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/lavaTop_low.png" type="Texture" id=2]
+[ext_resource path="res://floor.jpg" type="Texture" id=3]
+[ext_resource path="res://lanza.png" type="Texture" id=4]
+[ext_resource path="res://portal.png" type="Texture" id=5]
+[ext_resource path="res://AIGUAFINAL.gd" type="Script" id=6]
+[ext_resource path="res://Personatge.tscn" type="PackedScene" id=7]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/spikes.png" type="Texture" id=8]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/water.png" type="Texture" id=9]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/waterTop_high.png" type="Texture" id=10]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/signRight.png" type="Texture" id=11]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/waterTop_low.png" type="Texture" id=12]
+[ext_resource path="res://PLATFORMER PACK/PNG/Ground/Stone/stone.png" type="Texture" id=13]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/lava.png" type="Texture" id=14]
+[ext_resource path="res://FONDO.jpg" type="Texture" id=15]
+[ext_resource path="res://PLATFORMER PACK/PNG/Tiles/window.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 21.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 130, 20 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 95.0496
+height = 172.04
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24, 32.2189 )
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 18.0
+height = 26.0
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 72.625, 10.125 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 88, 19.25 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 69.5, 19.5 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 72.0625, 9 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 37.5, 22 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 289.073, 192.578 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 97, 25.9375 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 96.5, 37 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 84.5, 37 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 5.125, 1048.88 )
+
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 32.0
+height = 52.0
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 11, 16.5 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 10, 26 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 8, 25.5 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 94.501, 8.5 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=26]
+radius = 25.0
+
+[node name="GAME" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 299.0, -77.0 ]
+}
+
+[node name="fondo" type="Sprite" parent="."]
+position = Vector2( 985, 237.25 )
+scale = Vector2( 1.49687, 1.50972 )
+texture = ExtResource( 15 )
+
+[node name="Personatge" parent="." instance=ExtResource( 7 )]
+position = Vector2( 70, 320 )
+
+[node name="Camera2D" type="Camera2D" parent="Personatge"]
+position = Vector2( 11, 201 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
+
+[node name="Terra" type="StaticBody2D" parent="."]
+
+[node name="Collision_Terra" type="CollisionShape2D" parent="Terra"]
+position = Vector2( 512, 579 )
+shape = SubResource( 1 )
+
+[node name="Terra5" type="Sprite" parent="Terra"]
+position = Vector2( 884.5, 579.5 )
+scale = Vector2( 0.491379, 0.111399 )
+texture = ExtResource( 3 )
+
+[node name="Terra4" type="Sprite" parent="Terra"]
+position = Vector2( 480, 578.5 )
+scale = Vector2( 0.462069, 0.111399 )
+texture = ExtResource( 3 )
+
+[node name="Terra3" type="Sprite" parent="Terra"]
+position = Vector2( 87.0996, 579.165 )
+scale = Vector2( 0.299657, 0.107953 )
+texture = ExtResource( 3 )
+
+[node name="Terra2" type="Sprite" parent="Terra"]
+position = Vector2( 260.25, 578.75 )
+scale = Vector2( 0.297414, 0.110103 )
+texture = ExtResource( 3 )
+
+[node name="Terra" type="Sprite" parent="Terra"]
+position = Vector2( 678, 578.5 )
+scale = Vector2( 0.22069, 0.111399 )
+texture = ExtResource( 3 )
+
+[node name="Terra2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra2"]
+position = Vector2( 271, 379 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Terra2"]
+position = Vector2( 217.125, 379 )
+scale = Vector2( 0.261638, 0.103627 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Terra2"]
+position = Vector2( 347, 379 )
+scale = Vector2( 0.186207, 0.103627 )
+texture = ExtResource( 3 )
+
+[node name="Portal_abaix" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Portal_abaix"]
+position = Vector2( 978, 500 )
+scale = Vector2( 0.2525, 0.243 )
+texture = ExtResource( 5 )
+
+[node name="Collision_Portal_Abaix" type="CollisionShape2D" parent="Portal_abaix"]
+position = Vector2( 978, 503 )
+scale = Vector2( 0.2525, 0.243 )
+shape = SubResource( 4 )
+
+[node name="Llançes" type="Area2D" parent="."]
+
+[node name="Collision LLances" type="CollisionShape2D" parent="Llançes"]
+position = Vector2( 776, 525.219 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Llançes"]
+position = Vector2( 766, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
+texture = ExtResource( 4 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Sprite2" type="Sprite" parent="Llançes"]
+position = Vector2( 780, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
+texture = ExtResource( 4 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Sprite3" type="Sprite" parent="Llançes"]
+position = Vector2( 794, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
+texture = ExtResource( 4 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Sprite4" type="Sprite" parent="Llançes"]
+position = Vector2( 809, 521.625 )
+scale = Vector2( 0.0775, 0.07325 )
+texture = ExtResource( 4 )
+offset = Vector2( -141.936, 0 )
+
+[node name="Portal_Dalt" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Portal_Dalt"]
+position = Vector2( 200, 315 )
+scale = Vector2( 0.179375, 0.1895 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_Dalt"]
+position = Vector2( 200, 318 )
+shape = SubResource( 5 )
+
+[node name="LAVA" type="AnimatedSprite" parent="."]
+position = Vector2( 474.25, 374.5 )
+scale = Vector2( 1.13672, 0.226562 )
+frames = SubResource( 7 )
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 474.375, 389.125 )
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 474, 389 )
+scale = Vector2( 0.251724, 0.0518134 )
+texture = ExtResource( 3 )
+
+[node name="Terra3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terra3"]
+position = Vector2( 773, 380 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra3"]
+position = Vector2( 616.5, 379.5 )
+shape = SubResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="Terra3"]
+position = Vector2( 616.25, 379.5 )
+scale = Vector2( 0.238793, 0.101036 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Terra3"]
+position = Vector2( 773.25, 379.5 )
+scale = Vector2( 0.304311, 0.101036 )
+texture = ExtResource( 3 )
+
+[node name="HITBOX LAVA" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HITBOX LAVA"]
+position = Vector2( 473.938, 369 )
+shape = SubResource( 9 )
+
+[node name="FLEXA2" type="Sprite" parent="."]
+position = Vector2( 1361.83, 77.5932 )
+scale = Vector2( 0.309891, 0.317024 )
+texture = ExtResource( 11 )
+offset = Vector2( 65.6202, 36.894 )
+
+[node name="FLEXA" type="Sprite" parent="."]
+position = Vector2( 8, 524 )
+scale = Vector2( 0.308594, 0.332032 )
+texture = ExtResource( 11 )
+offset = Vector2( 65.6202, 36.894 )
+
+[node name="Peldones" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Peldones"]
+position = Vector2( 935, 302 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Peldones"]
+position = Vector2( 1081, 214 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Peldones"]
+position = Vector2( 1230, 134 )
+shape = SubResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="Peldones"]
+position = Vector2( 1081, 214 )
+scale = Vector2( 0.631817, 0.368044 )
+texture = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="Peldones"]
+position = Vector2( 935, 302 )
+scale = Vector2( 0.613282, 0.355469 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="Peldones"]
+position = Vector2( 1230, 135 )
+scale = Vector2( 0.631817, 0.368044 )
+texture = ExtResource( 13 )
+
+[node name="Terra Final" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Terra Final"]
+position = Vector2( 1621.94, -8.91377 )
+scale = Vector2( 0.319989, 0.147992 )
+shape = SubResource( 21 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Terra Final"]
+position = Vector2( 1619, 156.938 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terra Final"]
+position = Vector2( 1812.5, 146 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra Final"]
+position = Vector2( 1437.5, 146 )
+shape = SubResource( 24 )
+
+[node name="Sprite" type="Sprite" parent="Terra Final"]
+position = Vector2( 1437.5, 146 )
+scale = Vector2( 0.291379, 0.19171 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Terra Final"]
+position = Vector2( 1812.5, 146 )
+scale = Vector2( 0.332758, 0.19171 )
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="Terra Final"]
+position = Vector2( 1619, 157 )
+scale = Vector2( 0.334483, 0.134715 )
+texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="Terra Final"]
+position = Vector2( 1621.44, -8.41377 )
+scale = Vector2( 0.319989, 0.147992 )
+texture = ExtResource( 3 )
+
+[node name="FINAL" type="CollisionShape2D" parent="Terra Final"]
+position = Vector2( 1953.88, 494.25 )
+shape = SubResource( 25 )
+
+[node name="FINAL2" type="CollisionShape2D" parent="Terra Final"]
+position = Vector2( -67, 481 )
+shape = SubResource( 25 )
+
+[node name="FINAL3" type="CollisionShape2D" parent="Terra Final"]
+position = Vector2( 917.125, -249 )
+rotation = 1.5708
+shape = SubResource( 25 )
+
+[node name="PORTA FINAL" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="PORTA FINAL"]
+position = Vector2( 1861, 42.5 )
+scale = Vector2( 0.906251, 1.13281 )
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PORTA FINAL"]
+position = Vector2( 1860, 48 )
+shape = SubResource( 16 )
+
+[node name="PINXOS PELDON2" type="Area2D" parent="."]
+
+[node name="pinxos4" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 1732.55, -8.43412 )
+rotation = 1.5708
+scale = Vector2( 0.445773, 0.286121 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 1131.81, 214.25 )
+shape = SubResource( 17 )
+
+[node name="pinxos1" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 1017, 215 )
+rotation = -1.5708
+scale = Vector2( 0.282605, 0.37064 )
+texture = ExtResource( 8 )
+
+[node name="pinxos2" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 1505.46, -8.43324 )
+rotation = -1.5708
+scale = Vector2( 0.446356, 0.36651 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 1030.59, 216.375 )
+shape = SubResource( 17 )
+
+[node name="pinxos3" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 1143, 214 )
+rotation = 1.5708
+scale = Vector2( 0.277497, 0.336311 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 1518.44, -9.41377 )
+shape = SubResource( 22 )
+
+[node name="collision pinxo dal" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 1722, -7.5 )
+shape = SubResource( 23 )
+
+[node name="pinxos5" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 872, 302 )
+rotation = -1.5708
+scale = Vector2( 0.278221, 0.37064 )
+texture = ExtResource( 8 )
+
+[node name="pinxos6" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 998, 302 )
+rotation = 1.5708
+scale = Vector2( 0.282605, 0.37064 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 985, 303 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 885, 302.5 )
+shape = SubResource( 17 )
+
+[node name="pinxos7" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 1166, 135 )
+rotation = -1.5708
+scale = Vector2( 0.282605, 0.37064 )
+texture = ExtResource( 8 )
+
+[node name="pinxos8" type="Sprite" parent="PINXOS PELDON2"]
+position = Vector2( 1294, 135 )
+rotation = 1.5708
+scale = Vector2( 0.282605, 0.37064 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 1178.59, 135.375 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="PINXOS PELDON2"]
+position = Vector2( 1281.59, 135.375 )
+shape = SubResource( 17 )
+
+[node name="hitbox aigua" type="Area2D" parent="."]
+position = Vector2( 473.938, 369 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox aigua"]
+position = Vector2( 1146.56, -249.5 )
+shape = SubResource( 19 )
+
+[node name="AIGUAFINAL" type="AnimatedSprite" parent="hitbox aigua"]
+position = Vector2( 1144.56, -248.75 )
+scale = Vector2( 1.50781, 0.175781 )
+frames = SubResource( 20 )
+frame = 2
+playing = true
+
+[node name="Timer2" type="Timer" parent="hitbox aigua"]
+
+[node name="HITBOX INICI" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HITBOX INICI"]
+position = Vector2( 79, 538 )
+shape = SubResource( 26 )
+
+[connection signal="body_entered" from="Portal_abaix" to="Personatge" method="_on_Portal_abaix_body_entered"]
+[connection signal="area_exited" from="Llançes" to="Personatge" method="_on_Llanes_area_exited"]
+[connection signal="body_entered" from="Llançes" to="Personatge" method="_on_Llanes_body_entered"]
+[connection signal="body_exited" from="Llançes" to="Personatge" method="_on_Llanes_body_exited"]
+[connection signal="area_entered" from="Portal_Dalt" to="Personatge" method="_on_Portal_Dalt_area_entered"]
+[connection signal="body_entered" from="Portal_Dalt" to="Personatge" method="_on_Portal_Dalt_body_entered"]
+[connection signal="body_entered" from="HITBOX LAVA" to="Personatge" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="HITBOX LAVA" to="Personatge" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="PORTA FINAL" to="Personatge" method="_on_PORTA_FINAL_body_entered"]
+[connection signal="body_entered" from="PINXOS PELDON2" to="Personatge" method="_on_PINXOS_PELDON2_body_entered"]
+[connection signal="body_exited" from="PINXOS PELDON2" to="Personatge" method="_on_PINXOS_PELDON2_body_exited"]
+[connection signal="body_entered" from="hitbox aigua" to="Personatge" method="_on_hitbox_aigua_body_entered"]
+[connection signal="body_entered" from="hitbox aigua" to="hitbox aigua" method="_on_hitbox_aigua_body_entered"]
+[connection signal="body_exited" from="hitbox aigua" to="Personatge" method="_on_hitbox_aigua_body_exited"]
+[connection signal="body_exited" from="hitbox aigua" to="hitbox aigua" method="_on_hitbox_aigua_body_exited"]
+[connection signal="timeout" from="hitbox aigua/Timer2" to="Personatge" method="_on_Timer2_timeout"]
+[connection signal="timeout" from="hitbox aigua/Timer2" to="hitbox aigua" method="_on_Timer2_timeout"]
+[connection signal="body_entered" from="HITBOX INICI" to="Personatge" method="_on_HITBOX_INICI_body_entered"]

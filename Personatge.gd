@@ -21,8 +21,8 @@ func _physics_process(delta):
 	velocitat += gravetat * delta
 	velocitat = move_and_slide(velocitat, Vector2.UP)
 	anima(velocitat)
-	if vida <=0 :
-		get_tree().change_scene("res://INICI.tscn")
+	if vida <= 0 :
+		get_tree().change_scene("res://Play Again.tscn")
 func anima(velocitat: Vector2):
 	var animacio = $AnimatedSprite
 	if velocitat.x > 0:
@@ -89,3 +89,6 @@ func _on_hitbox_aigua_body_entered(body):
 
 func _on_hitbox_aigua_body_exited(body):
 	velocitat_base = 200
+
+func _on_PORTA_FINAL_body_entered(body):
+	get_tree().change_scene("res://Escena_Guanyar.tscn")

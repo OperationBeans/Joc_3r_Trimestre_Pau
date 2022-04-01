@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://TextureButton_play_again.gd" type="Script" id=1]
+[ext_resource path="res://dead_play_again_img.png" type="Texture" id=2]
+[ext_resource path="res://FONDO.jpg" type="Texture" id=3]
+
+[node name="Play Again" type="Node2D"]
+
+[node name="fondo" type="Sprite" parent="."]
+position = Vector2( 497, 339 )
+scale = Vector2( 0.785414, 0.787962 )
+texture = ExtResource( 3 )
+
+[node name="DeadPlayAgainImg" type="Sprite" parent="."]
+position = Vector2( 499, 259 )
+scale = Vector2( 1.43083, 1.19967 )
+texture = ExtResource( 2 )
+
+[node name="TextureButton_play_again" type="TextureButton" parent="."]
+margin_left = 330.0
+margin_top = 420.0
+margin_right = 655.0
+margin_bottom = 484.0
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="TextureButton_play_again" to="TextureButton_play_again" method="_on_TextureButton_play_again_pressed"]
