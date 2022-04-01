@@ -1,5 +1,5 @@
 extends KinematicBody2D
-var vida = 100
+var vida = 150
 var dins = false
 var velocitat_base = 200
 var velocitat = Vector2.ZERO
@@ -40,7 +40,7 @@ func anima(velocitat: Vector2):
 	
 func _on_Llanes_body_entered(body):
 	modulate = Color(1, 0, 0)
-	vida -= 20
+	vida -= 50
 func _on_Llanes_body_exited(body):
 	modulate = Color(1, 1, 1)
 
@@ -73,13 +73,19 @@ func _on_Area2D_body_exited(body):
 
 func _on_PINXOS_PELDON2_body_entered(body):
 	modulate  = Color(1,0,0)
-	vida -= 20
+	vida -= 50
 func _on_PINXOS_PELDON2_body_exited(body):
 	modulate = Color(1,1,1)
-func _on_hitbox_aigua_body_entered(body):
-	velocitat_base = 20
-func _on_hitbox_aigua_body_exited(body):
-	velocitat_base = 200
 
 func _on_HITBOX_INICI_body_entered(body):
 	modulate = Color(1,1,1)
+
+func _on_Timer2_timeout():
+	modulate = Color(1,0,0)
+	vida -= 50
+
+func _on_hitbox_aigua_body_entered(body):
+	velocitat_base = 10
+
+func _on_hitbox_aigua_body_exited(body):
+	velocitat_base = 200
